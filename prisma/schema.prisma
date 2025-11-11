@@ -7,17 +7,12 @@ generator client {
   provider = "prisma-client-js"
 }
 
-enum TransactionType {
-  INCOME
-  EXPENSE
-}
-
 model Transaction {
   id        Int              @id @default(autoincrement())
   amount    Float
   category  String
   note      String?
   date      DateTime
-  type      TransactionType
+  type      String
   createdAt DateTime         @default(now())
 }
