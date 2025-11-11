@@ -1,0 +1,23 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+model Transaction {
+  id        Int              @id @default(autoincrement())
+  amount    Float
+  category  String
+  note      String?
+  date      DateTime
+  type      TransactionType
+  createdAt DateTime         @default(now())
+}
